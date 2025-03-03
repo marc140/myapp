@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySafety App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: #ff0066;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .feature-box {
+            border: 2px solid #ff0066;
+            padding: 17px;
+            border-radius: 10px;
+            width: 30%;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 2px;
+            transition: transform 0.3s, background 0.3s;
+            position: relative;
+        }
+
+        .feature-box:hover {
+            transform: scale(1.05);
+            background: #ffe6f2;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            background: #ff0066;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dashboard-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .trigger-alert, .emergency-contacts {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            text-align: left;
+        }
+
+        .trigger-alert {
+            border: 2px solid #ffcccc;
+            background: #ffe6e6;
+        }
+
+        .emergency-contacts {
+            border: 2px solid #ff0066;
+        }
+
+        .emergency-contacts input, .emergency-contacts select, .trigger-alert textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #ff0066;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function toggleVoiceActivation(button) {
+            if (button.innerText === "Turn On") {
+                button.innerText = "Turn Off";
+                button.style.background = "#cc0000";
+            } else {
+                button.innerText = "Turn On";
+                button.style.background = "#ff0066";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>MySafety App</header>
+
+    <div class="feature-container">
+        <div class="feature-box">
+            <h3>Voice Activated</h3>
+            <p>Instant voice command recognition for emergencies.</p>
+            <button class="toggle-btn" onclick="toggleVoiceActivation(this)">Turn On</button>
+        </div>
+        <div class="feature-box">
+            <h3>Quick Alerts</h3>
+            <p>Rapid emergency contact notification system.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Location Tracking</h3>
+            <p>Precise location sharing during emergencies.</p>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="trigger-alert">
+            <h2>🚨 Trigger Alert</h2>
+            <label>Emergency Message</label>
+            <textarea placeholder="Describe your emergency situation..."></textarea>
+            <button class="btn">Click to get location</button>
+        </div>
+
+        <div class="emergency-contacts">
+            <h2>👤 Emergency Contacts</h2>
+            <label>Name</label>
+            <input type="text" placeholder="Enter name">
+            <label>Relationship</label>
+            <select>
+                <option>Select relationship</option>
+                <option>Father</option>
+                <option>Mother</option>
+                <option>Sibling</option>
+                <option>Friend</option>
+                <option>Relative</option>
+            </select>
+            <label>Phone</label>
+            <input type="text" placeholder="Enter phone number">
+            <label>Email</label>
+            <input type="email" placeholder="Enter email">
+            <button class="btn">Add Emergency Contact</button>
+        </div>
+    </div>
+</body>
+</html>

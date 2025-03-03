@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySafety App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f8ff;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: #0056b3;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f9f3f8;
+        }
+
+        .auth-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        .auth-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .auth-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .auth-buttons .active {
+            background: #ff0066;
+            color: white;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #ff0066;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>MySafety App</header>
+
+    <div class="auth-container" id="auth-container">
+        <div class="auth-box">
+            <div class="auth-buttons">
+                <button id="login-btn" class="active" onclick="showLogin()">Login</button>
+                <button id="register-btn" onclick="showRegister()">Register</button>
+            </div>
+            
+            <div id="login-form">
+                <input type="text" id="login-username" placeholder="Username" required minlength="3">
+                <div class="input-container">
+                    <input type="password" id="login-password" placeholder="Password" required minlength="6">
+                    <span class="toggle-password" onclick="togglePassword('login-password')">👁️</span>
+                </div>
+                <button class="login-btn" onclick="loginUser()">Login</button>
+                <p id="login-error" style="color:red; display:none;">Please fill out all fields correctly.</p>
+            </div>
+            
+            <div id="register-form" style="display: none;">
+                <input type="text" id="register-username" placeholder="Username" required minlength="3">
+                <input type="email" id="register-email" placeholder="Email" required pattern="[^@]+@[^@]+\.[a-zA-Z]{2,6}">
+                <div class="input-container">
+                    <input type="password" id="register-password" placeholder="Password" required minlength="6">
+                    <span class="toggle-password" onclick="togglePassword('register-password')">👁️</span>
+                </div>
+                <button class="login-btn" onclick="registerUser()">Register</button>
+                <p id="register-error" style="color:red; display:none;">Please fill out all fields correctly.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("register-form").style.display = "none";
+            document.getElementById("login-btn").classList.add("active");
+            document.getElementById("register-btn").classList.remove("active");
+        }
+
+        function showRegister() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("register-form").style.display = "block";
+            document.getElementById("register-btn").classList.add("active");
+            document.getElementById("login-btn").classList.remove("active");
+        }
+
+        function registerUser() {
+            let username = document.getElementById("register-username").value;
+            let email = document.getElementById("register-email").value;
+            let password = document.getElementById("register-password").value;
+            let errorMsg = document.getElementById("register-error");
+            
+            if (!username || !email || !password) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            errorMsg.style.display = "none";
+            alert("Registration successful! Redirecting to homepage...");
+            window.location.href = "jose.html";
+        }
+
+        function loginUser() {
+            let username = document.getElementById("login-username").value;
+            let password = document.getElementById("login-password").value;
+            let errorMsg = document.getElementById("login-error");
+            
+            if (!username || !password) {
+                errorMsg.style.display = "block";
+                return;
+            }
+            errorMsg.style.display = "none";
+            alert("Login successful! Redirecting to homepage...");
+            window.location.href = "jose.html";
+        }
+
+        function togglePassword(fieldId) {
+            let field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+            } else {
+                field.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>
